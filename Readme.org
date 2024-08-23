@@ -1,0 +1,52 @@
+#+title: Floofy Tofu's Emacs Config
+
+* Info
+
+The license is just to make github happy copy all you want and don't include the copyright
+notice I really don't care this is an Emacs config.
+
+This is a a complete restructuring of my Emacs configuration that I have tweeked since
+2016 (which isn't that long considering how I know people at work who have used Emacs
+longer than I have been alive).
+
+Goals in mind I had for this
+- Remove packages I don't use anymore; keep it relavant to what I use at work and in school
+- Restructure into multiple files; I decided having everything in 1 literate org file
+  actually made things less readable
+- Navigate from [[https://github.com/radian-software/straight.el][straight.el]] to
+  [[https://github.com/progfolio/elpaca][elpaca]] because
+  1. It's asynchronous installation is great because I no longer have to worry about what
+     order =use-package= declarations are placed. For the most part, it just figures it
+     all out for me.
+  2. It's asynchronous installation is way faster.
+  3. I can't do anything straight :3 🏳️‍🌈
+
+* Much Better Emacs Configs to +Plagiarize From+ Take Inspiration From
+
+We all do it.
+
+- Emacs from Scratch
+- A pretty popular config online: https://github.com/purcell/emacs.d. the layout I thought
+  was more readable than the typical literate org file and inspired me to switch. However,
+  I use elpaca.
+- The config of the Elpaca maintainer: https://github.com/progfolio/.emacs.d. I looked at
+  this to learn Elpaca, and ended up taking the profile time hook functions instead.
+
+* For the Future (for my sake)
+
+** TODO Local ELPA
+
+Add functionality to export the elpaca directory to a local ELPA directory.
+- Some control to use the local ELPA instead of Elpaca
+- Add ability to automatically rsync the ELPA to a list of remote hosts.
+- Such is the fate of a hardware engineer who needs to work on specific physical hosts to
+  access real physical hardware.
+
+** TODO Spellcheck
+
+One of
+- Finish writing custom spellcheck
+- Find a better 3rd party tool that doesn't slow everything down like flyspell-prog-mode
+- Contribute to a 3rd party package to make it have the features I want. I remember once
+  seeing some online but they only refreshed on buffer save; I would like it to refresh
+  every few seconds on a timer.

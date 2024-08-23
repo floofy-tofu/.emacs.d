@@ -1,0 +1,24 @@
+# Email (PRIVATE), probably should move this to ~/Documents or something
+email-config.el
+
+# Compiled
+*.elc
+
+# Packaging
+.cask
+
+# Backup files
+*~
+
+# Undo-tree save-files
+*.~undo-tree
+/eln-cache/
+/elpaca/
+/history
+/multisession/
+/parinfer-rust/
+/transient/
+/tree-sitter/
+/elpa/
+/tramp
+projects
