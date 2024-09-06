@@ -5,18 +5,24 @@
 
 (use-package ledger-mode
   :ensure t
+  :config
+  (defun tofu/ledger-local-completions ()
+    "Workaround annoyances in ledger mode by setting some buffer local stuff."
+    (setq-local completion-styles '(basic)
+                corfu-quit-no-match t
+                corfu-auto-prefix 0))
+  :hook
+  (ledger-mode . tofu/ledger-local-completions)
+  :custom
+  (ledger-highlight-xact-under-point nil)
   :mode ("\\.journal\\'" "\\.ledger\\'" "\\.hledger\\'" "\\.dat\\'"))
 
 ;; Copied the suggested config from hledger docs but not sure about all the options
 (use-package flymake-hledger
   :ensure t
   :after (ledger-mode flymake)
-  :hook ((ledger-mode . flymake-hledger-enable))
-  ;; Make C-x ` work ?
-  ;; XXX Both of these work only in the first file opened; debugging needed.
-  ;; (ledger-mode . (lambda () (setq next-error-function 'flymake-goto-next-error)))
-  ;; (ledger-mode . (lambda () (setq next-error-function (lambda (num reset) (when reset (goto-char (point-min))) (flymake-goto-next-error num)))))
-
+  :hook
+  (ledger-mode . flymake-hledger-enable)
   :custom
   ;; (flymake-show-diagnostics-at-end-of-line t)  ; might require Emacs 30
   (flymake-suppress-zero-counters t)

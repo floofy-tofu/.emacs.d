@@ -4,7 +4,10 @@
 ;;; Code:
 (use-package orderless
   :ensure t
-  :custom (completion-styles '(orderless)))
+  :custom
+  (completion-styles '(orderless basic))
+  ;; (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion)))))
 
 
 ;;; Minibuffer
@@ -154,8 +157,11 @@
   ;; Enable autocompletion with corfu
   (corfu-auto t)
   (corfu-auto-prefix 4)
-  (corfu-auto-delay 0)
-  (corfu-quit-no-match t)
+  (corfu-auto-delay 0.05)
+  ;; (corfu-quit-no-match t)
+  (corfu-quit-no-match 'separator)
+  ;; (corfu-on-exact-match 'quit)
+  (corfu-on-exact-match 'insert) ; default, not sure about how it handles snippets
   :init
   (global-corfu-mode))
 
