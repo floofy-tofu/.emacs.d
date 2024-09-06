@@ -98,6 +98,9 @@ This is only accurate if run on the hook."
 
 (require 'init-indent-guides)
 
+;; Finances
+(require 'init-ledger)
+
 ;; Email
 (when (file-exists-p "~/.emacs.d/email-config.el")
   (load "~/.emacs.d/email-config.el"))
