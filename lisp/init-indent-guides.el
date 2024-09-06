@@ -12,7 +12,8 @@
   :hook
   (prog-mode . highlight-indent-guides-mode)
   (yaml-mode . highlight-indent-guides-mode)
-  (yaml-ts-mode . highlight-indent-guides-mode))
+  (yaml-ts-mode . highlight-indent-guides-mode)
+  (ledger-mode . highlight-indent-guides-mode))
 
 
 (provide 'init-indent-guides)
