@@ -25,22 +25,24 @@
     (let ((temp-syntax-table (make-syntax-table verilog-mode-syntax-table)))
       (modify-syntax-entry ?_ "_" temp-syntax-table)
       temp-syntax-table)
-    "A syntax table to hapily `forward-word' and `backward-word' without screaming.
-Specifically, the screaming occurs when _ isn't treated as a delimiter.")
+    "A syntax table to make Verilog mode actually treat _ correctly.")
 
-  (setq tofu/navigation-verilog-mode-syntax-table
-        (make-syntax-table verilog-mode-syntax-table))
-  (modify-syntax-entry ?_ "_" tofu/navigation-verilog-mode-syntax-table)
+  (defun tofu/fix-verilog-syntax ()
+    (set-syntax-table tofu/navigation-verilog-mode-syntax-table))
 
-  (defun tofu/verilog-forward-word (&optional arg)
-    (interactive "p")
-    (with-syntax-table tofu/navigation-verilog-mode-syntax-table
-      (forward-word arg)))
+  :hook
+  (verilog-mode . tofu/fix-verilog-syntax))
 
-  (defun tofu/verilog-backward-word (&optional arg)
-    (interactive "p")
-    (with-syntax-table tofu/navigation-verilog-mode-syntax-table
-      (backward-word arg))))
+  ;; (defun tofu/verilog-forward-word (&optional arg)
+  ;;   (interactive "p")
+  ;;   (with-syntax-table tofu/navigation-verilog-mode-syntax-table
+  ;;     (forward-word arg)))
+
+  ;; (defun tofu/verilog-backward-word (&optional arg)
+  ;;   (interactive "p")
+  ;;   (with-syntax-table tofu/navigation-verilog-mode-syntax-table
+  ;;     (backward-word arg)))
+
 
 
 (use-package verilog-ext
