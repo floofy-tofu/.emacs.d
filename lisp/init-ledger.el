@@ -11,11 +11,20 @@
     (setq-local completion-styles '(basic)
                 corfu-quit-no-match t
                 corfu-auto-prefix 0))
+  (defun tofu/ledger-save-buffer (&optional arg)
+    (interactive)
+    (save-excursion
+      (ledger-post-align-postings 1 (buffer-end 1)))
+    (save-buffer arg))
   :hook
   (ledger-mode . tofu/ledger-local-completions)
   :custom
   (ledger-highlight-xact-under-point nil)
-  :mode ("\\.journal\\'" "\\.ledger\\'" "\\.hledger\\'" "\\.dat\\'"))
+  :mode
+  ("\\.journal\\'" "\\.ledger\\'" "\\.hledger\\'" "\\.dat\\'")
+  :bind
+  (:map ledger-mode-map
+   ("C-x C-s" . tofu/ledger-save-buffer)))
 
 ;; Copied the suggested config from hledger docs but not sure about all the options
 (use-package flymake-hledger
