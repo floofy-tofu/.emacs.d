@@ -64,9 +64,11 @@
 (setq create-lockfiles nil)
 
 
-;;; Backups
+;;; Backups and lockfiles
 (setq-default backup-by-copying t
               backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
+
+(setq-default create-lockfiles nil)
 
 
 ;; Put custmize crap in another file
