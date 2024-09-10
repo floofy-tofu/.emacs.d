@@ -9,8 +9,8 @@
 (use-package catppuccin-theme
   :ensure t
   :config
-  (setq catppuccin-flavor 'latte)
-  ;; (setq catppuccin-flavor 'frappe) ; Dark
+  ;; (setq catppuccin-flavor 'latte)
+  (setq catppuccin-flavor 'frappe) ; Dark
   (load-theme 'catppuccin :no-confirm))
 
 (provide 'init-themes)

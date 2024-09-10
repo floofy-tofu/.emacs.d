@@ -2,7 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
-(modify-all-frames-parameters '((font . "FiraCode Nerd Font-10")))
+(modify-all-frames-parameters '((font . "FiraCode Nerd Font-10")
+                                (alpha-background . 92)))
+
+
 
 (use-package ligature
   :ensure t
