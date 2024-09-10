@@ -13,6 +13,7 @@
 ;;; Vanilla Emacs features:
 ;; These are features that will actually drive me insane if they aren't enabled.
 (require 'init-vanilla-emacs)
+(require 'enable-disabled-commands)
 
 (require 'cl-lib)
 (cl-case system-type

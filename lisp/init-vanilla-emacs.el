@@ -74,12 +74,6 @@
 ;; Put custmize crap in another file
 (setq-default custom-file "")
 
-
-;; Enable disabled commands I regularily use
-(put 'narrow-to-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-
 
 (provide 'init-vanilla-emacs)
 ;;; init-vanilla-emacs.el ends here
