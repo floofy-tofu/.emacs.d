@@ -43,11 +43,11 @@ DOES NOT TRY TO BE SMART ABOUT IT AND CONSIDER IF IT ALREADY EXISTS OR FILE VARI
     ;; There's gotta be a better way to extract the filename here...
     (save-excursion
       (goto-char (point-min))
-      (insert ";;; " file "---" description "-*- lexical-binding: t; -*-\n")
+      (insert ";;; " file " --- " description " -*- lexical-binding: t; -*-\n")
       (insert ";;; Commentary:\n\n")
       (insert ";;; Code:\n\n")
       (goto-char (point-max))
-      (insert ";;;" file "ends here"))))
+      (insert ";;; " file " ends here"))))
 
 
 (provide 'tofu-useful-functions)
