@@ -102,8 +102,9 @@ This is only accurate if run on the hook."
 (require 'init-ledger)
 
 ;; Email
-(when (file-exists-p "~/.emacs.d/email-config.el")
-  (load "~/.emacs.d/email-config.el"))
+;; Uses loads in a directory out of the git repo for security reasons.
+(when (file-exists-p "~/mail-config/email-config.el")
+  (load "~/mail-config/email-config.el"))
 
 ;; FIXME: find a new modeline that doesn't suck
 
