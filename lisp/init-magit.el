@@ -2,6 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
+;; Install the latest version so Magit is happy
+(use-package transient
+  :ensure t)
+
 (use-package magit
   :ensure t
   :bind
