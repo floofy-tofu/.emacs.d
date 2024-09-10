@@ -173,38 +173,29 @@
 ;; “Running Hooks” in the Elisp manual for further information."
 ;; https://github.com/minad/cape
 
-;; Checkout general for better keybindings
-(defvar-keymap tofu-cape-prefix-map
-  :doc "Keymap used as completion entry point.
-The keymap should be installed globally under a prefix."
-  "p" #'completion-at-point
-  "t" #'complete-tag
-  "d" #'cape-dabbrev
-  "h" #'cape-history
-  "f" #'cape-file
-  "s" #'cape-elisp-symbol
-  "e" #'cape-elisp-block
-  "a" #'cape-abbrev
-  "l" #'cape-line
-  "w" #'cape-dict
-  "k"  'cape-keyword
-  ":"  'cape-emoji
-  "\\" 'cape-tex
-  "_"  'cape-tex
-  "^"  'cape-tex
-  "&"  'cape-sgml
-  "r"  'cape-rfc1345)
 
 (use-package cape
   :ensure t
-  ;; Bind prefix keymap providing all Cape commands under a mnemonic key.
-  ;; Press C-c p ? to for help.
-  :bind ("C-c p" . tofu-cape-prefix-map) ;; Alternative keys: M-p, M-+, ...
+  :init
+  
   ;; Alternatively bind Cape commands individually.
-  ;; :bind (("C-c p d" . cape-dabbrev)
-  ;;        ("C-c p h" . cape-history)
-  ;;        ("C-c p f" . cape-file)
-  ;;        ...)
+  :bind (("C-c p p" . completion-at-point)
+         ("C-c p t" . complete-tag)
+         ("C-c p d" . cape-dabbrev)
+         ("C-c p h" . cape-history)
+         ("C-c p f" . cape-file)
+         ("C-c p s" . cape-elisp-symbol)
+         ("C-c p e" . cape-elisp-block)
+         ("C-c p a" . cape-abbrev)
+         ("C-c p l" . cape-line)
+         ("C-c p w" . cape-dict)
+         ("C-c p k" . cape-keyword)
+         ("C-c p :" . cape-emoji)
+         ("C-c p \\" . cape-tex)
+         ("C-c p _" . cape-tex)
+         ("C-c p ^" . cape-tex)
+         ("C-c p &" . cape-sgml)
+         ("C-c p r" . cape-rfc1345))
   :init
   ;; Add to the global default value of `completion-at-point-functions' which is
   ;; used by `completion-at-point'.  The order of the functions matters, the
