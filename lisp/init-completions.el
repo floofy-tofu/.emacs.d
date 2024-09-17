@@ -165,6 +165,14 @@
   :init
   (global-corfu-mode))
 
+;; Terminal support
+(use-package corfu-terminal
+  :ensure t
+  :config
+  (unless (display-graphic-p)
+    (corfu-terminal-mode +1)))
+
+
 ;; Note that "One must distinguish the buffer-local and the global value of the
 ;; completion-at-point-functions variable. The buffer-local value of the list takes
 ;; precedence, but if the buffer-local list contains the symbol t at the end, it means
@@ -172,7 +180,6 @@
 ;; special meaning of the value t is a feature of the run-hooks function, see the section
 ;; “Running Hooks” in the Elisp manual for further information."
 ;; https://github.com/minad/cape
-
 
 (use-package cape
   :ensure t
