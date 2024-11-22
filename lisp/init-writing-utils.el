@@ -12,4 +12,6 @@
   (text-mode . visual-fill-column-mode)
   (visual-fill-column-mode . visual-line-mode))
 
+(provide 'init-writing-utils)
+
 ;;; init-writing-utils.el ends here

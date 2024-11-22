@@ -117,6 +117,7 @@ This is only accurate if run on the hook."
 ;; (require 'init-spellcheck)
 
 (require 'init-markdown)
+(require 'init-writing-utils)
 ;; LaTeX
 
 
