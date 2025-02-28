@@ -6,7 +6,7 @@
   :ensure t
   :if (>= emacs-major-version 29)
   :init
-  (setq treesit-auto-langs '(python c cpp cmake bash yaml verilog python json)) ; FIXME: make this configured by feature list
+  (setq treesit-auto-langs '(python c cpp cmake bash yaml verilog python json rust)) ; FIXME: make this configured by feature list
   :config
   (treesit-auto-install-all)
   (treesit-auto-add-to-auto-mode-alist 'all)

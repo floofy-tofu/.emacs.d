@@ -8,49 +8,47 @@
 
 ;; Call use-package
 
-;; #+begin_src emacs-lisp
-;;   (use-package org
-;;     :bind (("C-c l" . org-store-link)
-;;            ("C-c a" . org-agenda))
-;;     :config
-;;     (setq org-directory "~/Org")
 
-;;     (setq org-ellipsis " ▾") ; Replace the ... on collapsed headers
+(use-package org
+  :bind (("C-c l" . org-store-link)
+         ("C-c a" . org-agenda))
+  :config
+  (setq org-directory "~/Org")
 
-;;     (setq org-agenda-start-with-log-mode t)
-;;     (setq org-log-done 'time)
-;;     (setq org-log-into-drawer t)
+  (setq org-ellipsis " ▾") ; Replace the ... on collapsed headers
 
-;;     (setq org-agenda-files
-;;           '("~/Org"))
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-done 'time)
+  (setq org-log-into-drawer t)
 
-;;     (plist-put org-format-latex-options :scale 1.5) ; Make LaTeX previews bigger
+  (setq org-agenda-files
+        '("~/Org"))
 
-;;     :hook
-;;     ((org-mode . org-indent-mode)))
-;; #+end_src
+  (plist-put org-format-latex-options :scale 1.5) ; Make LaTeX previews bigger
+
+  :hook
+  ((org-mode . org-indent-mode)))
+
 
 ;; ** Structure Templates
 
 ;; Makes it easier to insert source blocks.
 
-;; #+begin_src emacs-lisp
-;;   (with-eval-after-load 'org
-;;     (require 'org-tempo)
+(with-eval-after-load 'org
+  (require 'org-tempo)
 
-;;     (add-to-list 'org-structure-template-alist '(el . "src emacs-lisp"))
-;;     (add-to-list 'org-structure-template-alist '(mat . "src matlab"))
-;;     (add-to-list 'org-structure-template-alist '(oct . "src octave"))
-;;     (add-to-list 'org-structure-template-alist '(py . "src python"))
-;;     (add-to-list 'org-structure-template-alist '(pyfile . "src python :results file"))
-;;     (add-to-list 'org-structure-template-alist '(cl . "src lisp"))
-;;     (add-to-list 'org-structure-template-alist '(ml . "src ocaml"))
-;;     (add-to-list 'org-structure-template-alist '(cpp . "src c++"))
-;;     (add-to-list 'org-structure-template-alist '(rv . "src riscv"))
+  (add-to-list 'org-structure-template-alist '(el . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '(mat . "src matlab"))
+  (add-to-list 'org-structure-template-alist '(oct . "src octave"))
+  (add-to-list 'org-structure-template-alist '(py . "src python"))
+  (add-to-list 'org-structure-template-alist '(pyfile . "src python :results file"))
+  (add-to-list 'org-structure-template-alist '(cl . "src lisp"))
+  (add-to-list 'org-structure-template-alist '(ml . "src ocaml"))
+  (add-to-list 'org-structure-template-alist '(cpp . "src c++"))
+  (add-to-list 'org-structure-template-alist '(rv . "src riscv"))
 
-;;     ;; Not for code, I think <q works but whatever
-;;     (add-to-list 'org-structure-template-alist '(quote . "quote")))
-;; #+end_src
+  ;; Not for code, I think <q works but whatever
+  (add-to-list 'org-structure-template-alist '(quote . "quote")))
 
 ;; ** Configure Babel Languages
 
