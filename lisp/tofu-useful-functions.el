@@ -6,7 +6,7 @@
 
 
 ;;; Scripting functions
-(defun tofu/path-in-user-emacs (file-path)
+(defun tofu/prepend-user-emacs (file-path)
   "Prepend `user-emacs-directory' to FILE-PATH."
   (concat user-emacs-directory file-path))
 
@@ -36,8 +36,9 @@
     (kill-new breakpoint)))
 
 (defun tofu/insert-elisp-header-and-footer (description)
-  "Insert a header (with a prompted DESCRIPTION) and footer to make flymake happy.
-DOES NOT TRY TO BE SMART ABOUT IT AND CONSIDER IF IT ALREADY EXISTS OR FILE VARIABLES."
+  "Insert a header (with a prompted DESCRIPTION) and footer to please flymake.
+DOES NOT TRY TO BE SMART ABOUT IT AND CONSIDER IF IT ALREADY EXISTS OR FILE
+VARIABLES."
   (interactive "sFile Description: ")
   (let ((file (car (last (string-split buffer-file-name "/")))))
     ;; There's gotta be a better way to extract the filename here...

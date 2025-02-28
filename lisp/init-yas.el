@@ -24,9 +24,7 @@
 
 (use-package yasnippet-capf
   :ensure t
-  :after cape
-  :config
-  (add-hook 'completion-at-point-functions #'yasnippet-capf))
+  :after cape)
 
 (provide 'init-yas)
 ;;; init-yas.el ends here

@@ -187,7 +187,7 @@
   
   ;; Alternatively bind Cape commands individually.
   :bind (("C-c p p" . completion-at-point)
-         ("C-c p t" . complete-tag)
+         ;;("C-c p t" . complete-tag)
          ("C-c p d" . cape-dabbrev)
          ("C-c p h" . cape-history)
          ("C-c p f" . cape-file)
@@ -206,16 +206,19 @@
   :init
   ;; Add to the global default value of `completion-at-point-functions' which is
   ;; used by `completion-at-point'.  The order of the functions matters, the
-  ;; first function returning a result wins.  Note that the list of buffer-local
+  ;; first function returning a result wins.  Note that the list of buffer-local&
   ;; completion functions takes precedence over the global list.
+  
   (add-hook 'completion-at-point-functions #'cape-dabbrev)
-  (add-hook 'completion-at-point-functions #'cape-file)
   (add-hook 'completion-at-point-functions #'cape-elisp-block)
-  (add-hook 'completion-at-point-functions #'cape-history)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  ;; (add-hook 'completion-at-point-functions #'cape-history)
 
   ;; FIXME: THIS IS JANK REVISE LATER
   (add-hook 'emacs-lisp-mode-hook
      (lambda () (setq completion-at-point-functions '(cape-elisp-symbol t)))))
+
+
 
 (provide 'init-completions)
 ;;; init-completions.el ends here
