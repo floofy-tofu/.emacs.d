@@ -168,6 +168,7 @@
 ;; Terminal support
 (use-package corfu-terminal
   :ensure t
+  :after corfu
   :config
   (unless (display-graphic-p)
     (corfu-terminal-mode +1)))

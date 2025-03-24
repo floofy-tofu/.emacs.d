@@ -8,6 +8,10 @@
   :config
   (setq yas-snippet-dirs (cons (concat user-emacs-directory "my-snippets")
 			       yas-snippet-dirs))
+
+  (define-key yas-minor-mode-map (kbd "<tab>") nil)
+  (define-key yas-minor-mode-map (kbd "TAB") nil)
+  
   :hook
   (prog-mode . yas-minor-mode)
   :bind
