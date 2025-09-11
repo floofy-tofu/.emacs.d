@@ -138,6 +138,15 @@ This is only accurate if run on the hook."
 (add-to-list 'auto-mode-alist '("\\PKGBUILD\\'" . sh-mode)) ; arch moment
 
 
+;; Turn on electric pairs unless it's a lisp mode
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (unless (member major-mode '(lisp-mode
+                                         lisp-interaction-mode
+                                         emacs-lisp-mode))
+              (electric-pair-local-mode))))
+
+
 
 ;; Local Variables:
 ;; no-byte-compile: t
