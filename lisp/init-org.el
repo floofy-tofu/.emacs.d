@@ -26,8 +26,16 @@
 
   (plist-put org-format-latex-options :scale 1.5) ; Make LaTeX previews bigger
 
-  :hook
-  ((org-mode . org-indent-mode)))
+  ;; Export settings
+  ;; (setq org-latex-compiler "xelatex")
+  (setq org-export-with-smart-quotes t)
+
+  ;; Geometry
+  (add-to-list 'org-latex-packages-alist
+               '("margin=1in" "geometry" nil))
+
+ :hook
+ ((org-mode . org-indent-mode)))
 
 
 ;; ** Structure Templates
@@ -67,37 +75,8 @@
 ;;     (push '("conf-unix" . conf-unix) org-src-lang-modes))
 ;; #+end_src
 
-;; ** Auto Tangle Configuration Files
-
-;; Kinda jank, stolen code.
-
-;; #+begin_src emacs-lisp
-;;   ;; Automatically tangle our Emacs.org config file when we save it
-;;   (defun config/org-babel-tangle-config ()
-;;     (when (string-equal (file-name-directory (buffer-file-name))
-;;                         (expand-file-name "~/.emacs.d/"))
-;;       ;; Dynamic scoping to the rescue
-;;       (let ((org-confirm-babel-evaluate nil))
-;;         (org-babel-tangle))))
-
-;;   (add-hook 'org-mode-hook
-;;             (lambda ()
-;;               (add-hook 'after-save-hook #'config/org-babel-tangle-config)))
-;; #+end_src
 
 ;; ** Export Settings
-
-;; #+begin_src emacs-lisp
-;;   (require 'ox-latex)
-;; #+end_src
-
-;; Change paragraph spacing:
-
-;; #+begin_src emacs-lisp
-;;   (add-to-list 'org-latex-packages-alist
-;;                '("skip=10pt plus1pt, indent=0em" "parskip" nil))
-;; #+end_src
-
 
 ;; Hyperlinks should be colored!
 
@@ -121,45 +100,15 @@
 
 ;; Use =engraved= exporter! Looks awesome for PDFs.
 
+
 (use-package engrave-faces
-  :ensure t)
+  ;; LaTeX export using Emacs native syntax highlighting.
+  :ensure t
+  :config
+  (setq org-latex-src-block-backend 'engraved))
 
-
-;; LaTeX export using Emacs native syntax highlighting.
-
-;; #+begin_src emacs-lisp
-;;   ;; xelatex
-;;   (setq org-latex-compiler "xelatex")
-
-;;   ;; Syntax highlighting
-;;   (setq org-latex-src-block-backend 'engraved)
-;;   ;; org-latex-engraved-theme "need a good light theme")
-
-;;   ;; Geometry
-;;   (add-to-list 'org-latex-packages-alist
-;;                '("" "geometry" nil))
-
-;;   ;; Smart quotes
-;;   (setq org-export-with-smart-quotes t)
-
-;;   ;; Beamer export, for additional info see https://github.com/fniessen/refcard-org-beamer
-;;   (eval-after-load "ox-latex"
-
-;;     ;; update the list of LaTeX classes and associated header (encoding, etc.)
-;;     ;; and structure
-;;     '(add-to-list 'org-latex-classes
-;;                   `("beamer"
-;;                     ,(concat "\\documentclass[presentation]{beamer}\n"
-;;                              "[DEFAULT-PACKAGES]"
-;;                              "[PACKAGES]"
-;;                              "[EXTRA]\n")
-;;                     ("\\section{%s}" . "\\section*{%s}")
-;;                     ("\\subsection{%s}" . "\\subsection*{%s}")
-;;                     ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
-;; #+end_src
 
 ;; Use correct background for html export.
-
 ;; #+begin_src emacs-lisp
 ;;   ;; Taken from stack exchange
 ;;   ;; https://emacs.stackexchange.com/questions/3374/set-the-background-of-org-exported-code-blocks-according-to-theme
@@ -180,19 +129,8 @@
 ;;     (add-hook 'org-export-before-processing-hook 'my/org-inline-css-hook))
 ;; #+end_src
 
-;; ** HTML Email
 
-;; Perhaps change this to engraved?
-
-;; Install a newer version of htmlize
-
-;; #+begin_src emacs-lisp
-;;   (use-package htmlize)
-;; #+end_src
-
-;; Install the org-mime package
-
-
+;; Install the org-mime package for html export
 (use-package org-mime
   :ensure t
   :config
