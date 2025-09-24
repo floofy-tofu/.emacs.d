@@ -135,7 +135,8 @@ This is only accurate if run on the hook."
 (if (treesit-available-p)
     (add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-ts-mode))
   (add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-mode)))
-(add-to-list 'auto-mode-alist '("\\PKGBUILD\\'" . sh-mode)) ; arch moment
+(add-to-list 'auto-mode-alist '("\\PKGBUILD\\'" . sh-mode)) ;; arch moment
+(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
 
 
 ;; Turn on electric pairs unless it's a lisp mode
